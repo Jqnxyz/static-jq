@@ -1,0 +1,2 @@
+#!/bin/zsh
+ps | grep -Ee "([0-9]{1,5})\ ttys[0-9]{3}\ {3}[0-9]{1,2}\:[0-9]{1,2}\.[0-9]{1,2}\ java\ \-jar\ Chatty\.jar" | sed -Ee 's/([0-9]{1,5})\ ttys[0-9]{3}\ {3}[0-9]{1,2}\:[0-9]{1,2}\.[0-9]{1,2}\ java\ \-jar\ Chatty\.jar/\1/' | read processPID; echo ${processPID}
