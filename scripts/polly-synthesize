@@ -1,0 +1,65 @@
+#!/bin/zsh
+
+# polly-synthesize Kendra ipa "/zɛn.kxwɒ/" ogg_vorbis "prefix" => prefix-Polly_ipa_Kendra_abcdefg.ogg
+# polly-synthesize [Voice] [Input type (ipa/text)] <Input> [Output type (ogg_vorbis/mp3)] [Filename prefix string]
+
+# For MacOS!
+
+# Get attrs
+listenApp="Movist Pro"
+voiceID=$1
+typeOfInput=$2
+textInput=$3
+outputFormat=$4
+outputPrefix=$5
+# Generate slug to prevent duplicate filenames
+slugID=$(cuid --slug)
+outputExt=""
+
+# Set defaults
+# AWS updates voices periodically, don't keep static list. Default to Salli
+case "${voiceID}" in
+	-) voiceID='Salli' ;;
+	*) voiceID=${voiceID} ;;
+esac
+
+case "${typeOfInput}" in
+	ipa) commandType='ipa' ;;
+	text) commandType='text' ;;
+	-) commandType='text' ;;
+	*) commandType='text' ;;
+esac
+
+case "${outputFormat}" in
+	ogg) outputFormat='ogg_vorbis' ;;
+	ogg_vorbis) outputFormat='ogg_vorbis' ;;
+	mp3) outputFormat='mp3' ;;
+	-) outputFormat='ogg_vorbis' ;;
+	*) outputFormat=${outputFormat} ;;
+esac
+
+case "${outputFormat}" in
+	ogg_vorbis) outputExt='ogg' ;;
+	mp3) outputExt='mp3' ;;
+	*) outputExt=${outputFormat} ;;
+esac
+
+case "${outputPrefix}" in
+	SLUG) outputPrefix=$(cuid --slug) ;;
+	-) outputPrefix='File' ;;
+	*) outputPrefix=${outputPrefix} ;;
+esac
+
+outputJSON="{}"
+outputName="${outputPrefix}-Polly_${typeOfInput}_${voiceID}-${slugID}.${outputExt}"
+
+case "${commandType}" in
+	ipa) outputJSON=$(aws polly synthesize-speech --text "<phoneme alphabet='ipa' ph='${textInput}'></phoneme>" --voice-id "${voiceID}" --text-type ssml --output-format "${outputFormat}" ${outputName} | jq) ;;
+	text) outputJSON=$(aws polly synthesize-speech --text "${textInput}" --voice-id "${voiceID}" --text-type text --output-format "${outputFormat}" ${outputName} | jq) ;;
+esac
+
+echo ${outputJSON}
+
+echo "File './${outputName}' created."
+# aws polly synthesize-speech --text "<phoneme alphabet='ipa' ph='${textInput}'></phoneme>" --voice-id "${voiceID}" --text-type ssml --output-format "${outputFormat}" ${outputPrefix}-Polly_${voiceID}.${outputExt}; 
+open -a ${listenApp} ${outputName}
