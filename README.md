@@ -1,6 +1,10 @@
 # Static files
 Personal repository of useful statics
 
+## General
+* [macOS setup instructions](mac_setup.sh)
+	* Personal instructions for setting up a new macOS system.
+
 ## Twitch Resources
 [Link to folder](/Twitch_Resources/)
 
