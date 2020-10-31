@@ -27,8 +27,9 @@ gh auth login -w
 # OhMyZsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 zsh --version
+chmod g-w,o-w /usr/local/share/zsh
+chmod g-w,o-w /usr/local/share/zsh/site-functions
 omz update
-open -a "Sublime Text" ~/.zshrc
 
 # Powerline fonts
 cd ~/Downloads
@@ -41,6 +42,13 @@ sudo rm -r fonts
 # Powerlevel10k
 cd ~
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+# Nerd fonts
+brew tap homebrew/cask-fonts
+brew cask install font-agave-nerd-font
+
+# Do your things
+open -a "Sublime Text" ~/.zshrc
 
 
 #### Add Below to .zshrc #####
