@@ -4,6 +4,8 @@ Personal repository of useful statics
 ## General
 * [macOS setup instructions](mac_setup.sh)
 	* Personal instructions for setting up a new macOS system.
+* [Guide to create Windows install USB on macOS](wininstall.md)
+	* Instructions to create a Windows 10 install USB from a macOS system.
 
 ## Twitch Resources
 [Link to folder](/Twitch_Resources/)
@@ -23,3 +25,4 @@ Personal repository of useful statics
 
 ## Acknowledgements
 * [Louis6321](https://github.com/louis6321) for most of the custom Twitch settings in the chatty_settings file.
+* [freeCodeCamp](https://www.freecodecamp.org/news/how-make-a-windows-10-usb-using-your-mac-build-a-bootable-iso-from-your-macs-terminal/) for original Windows 10 USB guide.

@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+# ./sms-send "SenderID" "Phone Number" "Message Text"
+aws sns publish --message ${3} --phone-number ${2} --message-attributes "{\"AWS.SNS.SMS.SenderID\": { \"DataType\": \"String\",\"StringValue\": \"${1}\"}, \"AWS.SNS.SMS.SMSType\": {\"DataType\": \"String\",\"StringValue\": \"Transactional\"}}"
+
