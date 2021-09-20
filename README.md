@@ -12,7 +12,7 @@ Personal repository of useful statics
 
 * [OxidizeBot setup](/Twitch_Resources/OxidizeBot_JQnxyz.md)
     * Quickstart guide including basic aliases and commands.
-* [Chatty Settings](/Twitch_Resources/chatty_settings) *Prerequisite: [Avenir Next Font](/Fonts/Avenir_Next/) ([Archive download .tar.xz](https://github.com/Jqnxyz/static-jq/raw/master/Fonts/Archives/Avenir_Next.tar.xz))*
+* [Chatty Settings](/Twitch_Resources/chatty_settings-dark) *Prerequisite: [Avenir Next Font](/Fonts/Avenir_Next/) ([Archive download .tar.xz](https://github.com/Jqnxyz/static-jq/raw/master/Fonts/Archives/Avenir_Next.tar.xz))*
     * Chatty chat client custom settings.
 
         Download Chatty client [here](https://chatty.github.io/#download)).
